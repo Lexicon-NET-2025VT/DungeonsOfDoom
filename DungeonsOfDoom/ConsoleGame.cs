@@ -19,7 +19,7 @@ internal class ConsoleGame
         {
             Console.Clear();
             DisplayRooms();
-            DisplayStats();
+            DisplayPlayerInfo();
             AskForMovement();
         } while (player.IsAlive);
 
@@ -64,9 +64,13 @@ internal class ConsoleGame
         }
     }
 
-    void DisplayStats()
+    void DisplayPlayerInfo()
     {
         Console.WriteLine($"❤️ {player.Health}/{Player.MaxHealth}");
+        foreach (var item in player.Backpack)
+        {
+            Console.WriteLine(item.Name);
+        }
     }
 
     void AskForMovement()
@@ -91,6 +95,18 @@ internal class ConsoleGame
         {
             player.X = newX;
             player.Y = newY;
+
+            EncounterRoom();
+        }
+    }
+
+    void EncounterRoom()
+    {
+        var room = rooms[player.X, player.Y];
+        if (room.ItemInRoom != null)
+        {
+            player.Backpack.Add(room.ItemInRoom);
+            room.ItemInRoom = null;
         }
     }
 

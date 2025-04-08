@@ -6,8 +6,10 @@
         public Player()
         {
             Health = MaxHealth;
+            Backpack = new List<Item>();
         }
 
+        public List<Item> Backpack { get; }
         public int Health { get; set; }
         public bool IsAlive => Health > 0;
         public int X { get; set; }
