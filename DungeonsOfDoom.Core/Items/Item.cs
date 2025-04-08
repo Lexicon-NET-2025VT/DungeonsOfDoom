@@ -1,6 +1,6 @@
-﻿namespace DungeonsOfDoom.Core
+﻿namespace DungeonsOfDoom.Core.Items
 {
-    public class Item
+    public abstract class Item
     {
         public Item(string name)
         {

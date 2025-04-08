@@ -1,4 +1,6 @@
-﻿namespace DungeonsOfDoom.Core
+﻿using DungeonsOfDoom.Core.Items;
+
+namespace DungeonsOfDoom.Core.Creatures
 {
     public class Player : Creature
     {

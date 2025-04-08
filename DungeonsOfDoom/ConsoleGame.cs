@@ -1,4 +1,6 @@
 ﻿using DungeonsOfDoom.Core;
+using DungeonsOfDoom.Core.Creatures;
+using DungeonsOfDoom.Core.Items;
 using System.Text;
 
 namespace DungeonsOfDoom;
@@ -37,9 +39,13 @@ internal class ConsoleGame
 
                 int spawnChance = Random.Shared.Next(1, 100 + 1);
                 if (spawnChance < 10)
-                    rooms[x, y].MonsterInRoom = new Monster("Skeleton", 30);
+                    rooms[x, y].MonsterInRoom = new Zombie();
+                else if (spawnChance < 15)
+                    rooms[x, y].MonsterInRoom = new Beholder();
                 else if (spawnChance < 20)
-                    rooms[x, y].ItemInRoom = new Item("Sword");
+                    rooms[x, y].ItemInRoom = new Sword();
+                else if (spawnChance < 25)
+                    rooms[x, y].ItemInRoom = new Potion();
             }
         }
     }
