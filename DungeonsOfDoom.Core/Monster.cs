@@ -1,15 +1,12 @@
 ﻿namespace DungeonsOfDoom.Core
 {
-    public class Monster
+    public class Monster : Creature
     {
-        public Monster(string name, int health)
+        public Monster(string name, int health) : base(health)
         {
             Name = name;
-            Health = health;
         }
 
         public string Name { get; set; }
-        public int Health { get; set; }
-        public bool IsAlive => Health > 0;
     }
 }

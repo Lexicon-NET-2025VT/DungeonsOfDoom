@@ -67,10 +67,8 @@ internal class ConsoleGame
     void DisplayPlayerInfo()
     {
         Console.WriteLine($"❤️ {player.Health}/{Player.MaxHealth}");
-        foreach (var item in player.Backpack)
-        {
-            Console.WriteLine(item.Name);
-        }
+        if (player.Backpack.Count > 0)
+            Console.WriteLine($"📦 {string.Join(", ", player.Backpack.Select(o => o.Name))}");
     }
 
     void AskForMovement()
