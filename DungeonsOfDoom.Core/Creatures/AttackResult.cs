@@ -5,4 +5,4 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DungeonsOfDoom.Core.Creatures;
-public record AttackResult(Creature Attacker, Creature Opponent, int Damage);
+public record class AttackResult(Creature Attacker, Creature Opponent, int Damage);

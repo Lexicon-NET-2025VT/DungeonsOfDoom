@@ -23,9 +23,9 @@ internal class ConsoleGame
             DisplayRooms();
             DisplayPlayerInfo();
             AskForMovement();
-        } while (player.IsAlive);
+        } while (player.IsAlive && Monster.MonsterCounter > 0);
 
-        GameOver();
+        GameFinished();
     }
 
     void CreateRooms()
@@ -38,9 +38,9 @@ internal class ConsoleGame
                 rooms[x, y] = new Room();
 
                 int spawnChance = Random.Shared.Next(1, 100 + 1);
-                if (spawnChance < 10)
+                if (spawnChance < 2)
                     rooms[x, y].MonsterInRoom = new Zombie();
-                else if (spawnChance < 15)
+                else if (spawnChance < 4)
                     rooms[x, y].MonsterInRoom = new Beholder();
                 else if (spawnChance < 20)
                     rooms[x, y].ItemInRoom = new Sword();
@@ -72,6 +72,7 @@ internal class ConsoleGame
 
     void DisplayPlayerInfo()
     {
+        Console.WriteLine($"😈 {Monster.MonsterCounter}");
         Console.WriteLine($"❤️ {player.Health}/{Player.MaxHealth}");
         if (player.Backpack.Count > 0)
             Console.WriteLine($"📦 {string.Join(", ", player.Backpack.Select(o => o.Name))}");
@@ -117,7 +118,7 @@ internal class ConsoleGame
         if (room.MonsterInRoom != null)
         {
             //var (attacker, opponent, damage) = player.AttackWithTupes(room.MonsterInRoom);
-            
+
             PrintAttackResult(player.Attack(room.MonsterInRoom));
 
             if (room.MonsterInRoom.IsAlive)
@@ -133,10 +134,13 @@ internal class ConsoleGame
         Console.ReadKey();
     }
 
-    void GameOver()
+    void GameFinished()
     {
         Console.Clear();
-        Console.WriteLine("Game over...");
+        if (Monster.MonsterCounter == 0)
+            Console.WriteLine("Level completed!");
+        else
+            Console.WriteLine("Game over...");
         Console.ReadKey();
         Play();
     }
