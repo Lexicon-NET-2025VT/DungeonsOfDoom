@@ -14,4 +14,9 @@ public abstract class Creature
     {
         Health = health;
     }
+
+    public virtual void Attack(Creature opponent, int damage = 10)
+    {
+        opponent.Health -= damage;
+    }
 }

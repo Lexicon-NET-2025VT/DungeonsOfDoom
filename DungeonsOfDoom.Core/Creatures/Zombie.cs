@@ -10,4 +10,12 @@ public class Zombie : Monster
 	public Zombie() : base("Zombie", 5)
 	{
 	}
+
+    public override void Attack(Creature opponent, int damage = 5)
+    {
+        if (opponent.Health > Health)
+            damage = 1;
+        
+        base.Attack(opponent, damage);
+    }
 }

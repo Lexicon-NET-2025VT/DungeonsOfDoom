@@ -1,4 +1,7 @@
-﻿namespace DungeonsOfDoom.Core.Items
+﻿
+using DungeonsOfDoom.Core.Creatures;
+
+namespace DungeonsOfDoom.Core.Items
 {
     public abstract class Item
     {
@@ -8,5 +11,7 @@
         }
 
         public string Name { get; set; }
+
+        public abstract void PickUp(Player player);
     }
 }

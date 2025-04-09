@@ -7,4 +7,5 @@ using System.Threading.Tasks;
 namespace DungeonsOfDoom.Core.Items;
 public class Potion() : Item("Potion")
 {
+
 }

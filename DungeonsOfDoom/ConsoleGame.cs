@@ -110,7 +110,18 @@ internal class ConsoleGame
         if (room.ItemInRoom != null)
         {
             player.Backpack.Add(room.ItemInRoom);
+            room.ItemInRoom.PickUp(player);
             room.ItemInRoom = null;
+        }
+
+        if (room.MonsterInRoom != null)
+        {
+            player.Attack(room.MonsterInRoom);
+
+            if (room.MonsterInRoom.IsAlive)
+                room.MonsterInRoom.Attack(player);
+            else
+                room.MonsterInRoom = null;
         }
     }
 
