@@ -7,16 +7,25 @@ using System.Threading.Tasks;
 namespace DungeonsOfDoom.Core.Creatures;
 public abstract class Creature
 {
-    public int Health { get; set; }
+    public virtual int Health { get; set; }
     public bool IsAlive => Health > 0;
+    public string Name { get; set; }
 
-    public Creature(int health)
+    public Creature(string name, int health)
     {
+        Name = name;
         Health = health;
     }
 
-    public virtual void Attack(Creature opponent, int damage = 10)
+    public virtual AttackResult Attack(Creature opponent, int damage = 10)
     {
         opponent.Health -= damage;
+        return new AttackResult(this, opponent, damage);
     }
+
+    //public virtual (Creature Attacker, Creature Opponent, int Damage) AttackWithTupes(Creature opponent, int damage = 10)
+    //{
+    //    opponent.Health -= damage;
+    //    return (this, opponent, damage);
+    //}
 }

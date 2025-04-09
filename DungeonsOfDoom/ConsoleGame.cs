@@ -116,13 +116,21 @@ internal class ConsoleGame
 
         if (room.MonsterInRoom != null)
         {
-            player.Attack(room.MonsterInRoom);
+            //var (attacker, opponent, damage) = player.AttackWithTupes(room.MonsterInRoom);
+            
+            PrintAttackResult(player.Attack(room.MonsterInRoom));
 
             if (room.MonsterInRoom.IsAlive)
-                room.MonsterInRoom.Attack(player);
+                PrintAttackResult(room.MonsterInRoom.Attack(player));
             else
                 room.MonsterInRoom = null;
         }
+    }
+
+    void PrintAttackResult(AttackResult result)
+    {
+        Console.WriteLine($"{result.Attacker.Name} hurts {result.Opponent.Name} with {result.Damage}...");
+        Console.ReadKey();
     }
 
     void GameOver()
