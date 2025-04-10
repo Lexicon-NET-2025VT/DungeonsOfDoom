@@ -2,6 +2,7 @@
 using DungeonsOfDoom.Core.Creatures;
 using DungeonsOfDoom.Core.Items;
 using System.Text;
+using Utils;
 
 namespace DungeonsOfDoom;
 internal class ConsoleGame
@@ -133,7 +134,8 @@ internal class ConsoleGame
 
     void PrintAttackResult(AttackResult result)
     {
-        Console.WriteLine($"{result.Attacker.Name} hurts {result.Opponent.Name} with {result.Damage}...");
+        //ConsoleUtils.AnimateText($"{result.Attacker.Name} hurts {result.Opponent.Name} with {result.Damage}...");
+        $"{result.Attacker.Name} hurts {result.Opponent.Name} with {result.Damage}...".AnimateText();
         Console.ReadKey();
     }
 
