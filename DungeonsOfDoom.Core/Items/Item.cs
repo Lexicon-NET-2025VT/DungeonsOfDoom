@@ -3,7 +3,7 @@ using DungeonsOfDoom.Core.Creatures;
 
 namespace DungeonsOfDoom.Core.Items
 {
-    public abstract class Item
+    public abstract class Item : ICarryable
     {
         public Item(string name)
         {

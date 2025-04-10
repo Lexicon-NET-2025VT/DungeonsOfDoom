@@ -124,7 +124,10 @@ internal class ConsoleGame
             if (room.MonsterInRoom.IsAlive)
                 PrintAttackResult(room.MonsterInRoom.Attack(player));
             else
+            {
+                player.Backpack.Add(room.MonsterInRoom);
                 room.MonsterInRoom = null;
+            }
         }
     }
 

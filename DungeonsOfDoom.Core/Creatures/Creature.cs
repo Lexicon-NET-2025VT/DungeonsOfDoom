@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DungeonsOfDoom.Core.Creatures;
-public abstract class Creature
+public abstract class Creature : ICarryable
 {
     public virtual int Health { get; set; }
     public bool IsAlive => Health > 0;
